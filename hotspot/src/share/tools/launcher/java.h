@@ -22,7 +22,6 @@
  *
  */
 
-
 #ifndef _JAVA_H_
 #define _JAVA_H_
 
@@ -40,8 +39,8 @@ typedef jint (JNICALL *CreateJavaVM_t)(JavaVM **pvm, void **env, void *args);
 typedef jint (JNICALL *GetDefaultJavaVMInitArgs_t)(void *args);
 
 typedef struct {
-    CreateJavaVM_t CreateJavaVM;
-    GetDefaultJavaVMInitArgs_t GetDefaultJavaVMInitArgs;
+	CreateJavaVM_t CreateJavaVM;
+	GetDefaultJavaVMInitArgs_t GetDefaultJavaVMInitArgs;
 } InvocationFunctions;
 
 /*
@@ -60,13 +59,8 @@ GetApplicationHome(char *buf, jint bufsize);
 const char *
 GetArch();
 
-void CreateExecutionEnvironment(int *_argc,
-                                       char ***_argv,
-                                       char jrepath[],
-                                       jint so_jrepath,
-                                       char jvmpath[],
-                                       jint so_jvmpath,
-                                       char **original_argv);
+void CreateExecutionEnvironment(int *_argc, char ***_argv, char jrepath[],
+		jint so_jrepath, char jvmpath[], jint so_jvmpath, char **original_argv);
 
 /*
  * Report an error message to stderr or a window as appropriate.  The
@@ -91,7 +85,7 @@ const char *jlong_format_specifier();
  * Block current thread and continue execution in new thread
  */
 int ContinueInNewThread(int (JNICALL *continuation)(void *),
-                        jlong stack_size, void * args);
+		jlong stack_size, void * args);
 
 /* sun.java.launcher.* platform properties. */
 void SetJavaLauncherPlatformProps(void);
